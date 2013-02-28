@@ -178,7 +178,7 @@ static Obj AVLFreeNode_C( Obj self, Obj t, Obj n)
     return AVLFreeNode(t,INT_INTOBJ(n));
 }
 
-Obj static inline AVLValue( Obj t, Int n )
+static inline Obj AVLValue( Obj t, Int n )
 {
     Obj vals = AVLValues(t);
     if (vals == Fail) return True;
@@ -187,7 +187,7 @@ Obj static inline AVLValue( Obj t, Int n )
     return ELM_LIST(vals,n);
 }
 
-void static inline SetAVLValue( Obj t, Int n, Obj v )
+static inline void SetAVLValue( Obj t, Int n, Obj v )
 {
     Obj vals = AVLValues(t);
     n /= 4;
@@ -219,13 +219,14 @@ static inline Int AVLFind( Obj t, Obj d )
 
 static Obj AVLFind_C( Obj self, Obj t, Obj d )
 {
+    Int tmp;
     if (TNUM_OBJ(t) != T_POSOBJ ||
         (TYPE_POSOBJ(t) != AVLTreeType &&
          TYPE_POSOBJ(t) != AVLTreeTypeMutable)) {
         ErrorQuit( "Usage: AVLFind(avltree, object)", 0L, 0L );
         return 0L;
     }
-    Int tmp = AVLFind(t,d);
+    tmp = AVLFind(t,d);
     if (tmp == 0)
         return Fail;
     else
@@ -257,13 +258,14 @@ static inline Int AVLFindIndex( Obj t, Obj d )
 
 static Obj AVLFindIndex_C( Obj self, Obj t, Obj d )
 {
+    Int tmp;
     if (TNUM_OBJ(t) != T_POSOBJ ||
         (TYPE_POSOBJ(t) != AVLTreeType &&
          TYPE_POSOBJ(t) != AVLTreeTypeMutable)) {
         ErrorQuit( "Usage: AVLFindIndex(avltree, object)", 0L, 0L );
         return 0L;
     }
-    Int tmp = AVLFindIndex(t,d);
+    tmp = AVLFindIndex(t,d);
     if (tmp == 0)
         return Fail;
     else
@@ -272,13 +274,14 @@ static Obj AVLFindIndex_C( Obj self, Obj t, Obj d )
             
 static Obj AVLLookup_C( Obj self, Obj t, Obj d )
 {
+    Int p;
     if (TNUM_OBJ(t) != T_POSOBJ ||
         (TYPE_POSOBJ(t) != AVLTreeType &&
          TYPE_POSOBJ(t) != AVLTreeTypeMutable)) {
         ErrorQuit( "Usage: AVLLookup(avltree, object)", 0L, 0L );
         return 0L;
     }
-    Int p = AVLFind(t,d);
+    p = AVLFind(t,d);
     if (p == 0) return Fail;
     return AVLValue(t,p);
 }

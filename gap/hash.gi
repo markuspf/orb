@@ -600,7 +600,6 @@ function(ht,x)
   Info(InfoOrb,3,"Done.");
 end );
 
-
 # First a few hash functions:
 
 InstallGlobalFunction( ORB_HashFunctionForShortGF2Vectors,
