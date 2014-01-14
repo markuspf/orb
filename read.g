@@ -14,9 +14,16 @@
 #############################################################################
 
 ReadPackage("orb","gap/homwdata.gi");
-ReadPackage("orb","gap/avltree.gi");
-ReadPackage("orb","gap/hash.gi");
-ReadPackage("orb","gap/cache.gi");
+
+# This functionality is moved to the GAPData package. Since
+# GAPData is a SuggestedOtherPackage, it should already be
+# Loaded here.
+if TestPackageAvailability("gapdata") <> true then
+    ReadPackage("orb","gap/avltree.gi");
+    ReadPackage("orb","gap/hash.gi");
+    ReadPackage("orb","gap/cache.gi");
+fi;
+
 ReadPackage("orb","gap/orbits.gi");
 ReadPackage("orb","gap/search.gi");
 ReadPackage("orb","gap/bysuborbit.gi");

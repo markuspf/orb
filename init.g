@@ -33,9 +33,16 @@ if not(IsBound(RowLength)) then
 fi;
 
 ReadPackage("orb","gap/homwdata.gd");
-ReadPackage("orb","gap/avltree.gd");
-ReadPackage("orb","gap/hash.gd");
-ReadPackage("orb","gap/cache.gd");
+
+# This functionality is moved to the GAPData package. Since
+# GAPData is a SuggestedOtherPackage, it should already be
+# Loaded here.
+if TestPackageAvailability("gapdata") <> true then
+    ReadPackage("orb","gap/avltree.gd");
+    ReadPackage("orb","gap/hash.gd");
+    ReadPackage("orb","gap/cache.gd");
+fi;
+
 ReadPackage("orb","gap/orbits.gd");
 ReadPackage("orb","gap/search.gd");
 ReadPackage("orb","gap/bysuborbit.gd");

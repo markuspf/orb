@@ -156,11 +156,11 @@ PackageDoc := rec(
   Autoload  := true
 ),
 
-
+# (mpf) GAPData should become a NeededOtherPackage
 Dependencies := rec(
   GAP := ">=4.4.12",
   NeededOtherPackages := [["GAPDoc", ">= 1.2"]],
-  SuggestedOtherPackages := [["IO",">= 3.3"]],
+  SuggestedOtherPackages := [["GAPData", ">= 0.0"], ["IO",">= 3.3"]],
   ExternalConditions := []
                       
 ),
